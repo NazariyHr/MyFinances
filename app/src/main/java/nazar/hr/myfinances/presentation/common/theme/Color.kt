@@ -2,8 +2,12 @@ package nazar.hr.myfinances.presentation.common.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val ColorPrimaryWhite = Color(229, 246, 230)
+val ColorPrimaryLighter = Color(194, 232, 197)
+val ColorPrimary = Color(154, 214, 158)
+val ColorPrimaryDarker = Color(111, 191, 116)
+val ColorPrimaryDark = Color(68, 160, 74)
 
-val MainBgColor = Color(154, 214, 157, 255)
+val ColorMainBg = ColorPrimaryWhite
+val ColorLightContainers = ColorPrimaryLighter
+val ColorDarkContainers = ColorPrimaryDarker

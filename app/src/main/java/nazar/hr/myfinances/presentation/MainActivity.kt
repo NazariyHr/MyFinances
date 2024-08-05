@@ -7,14 +7,13 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import nazar.hr.myfinances.presentation.common.theme.MainBgColor
+import nazar.hr.myfinances.presentation.common.theme.ColorMainBg
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
+import nazar.hr.myfinances.presentation.navigation.AppNavigationRoot
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -38,7 +37,7 @@ class MainActivity : ComponentActivity() {
                 Content(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(color = MainBgColor)
+                        .background(color = ColorMainBg)
                 )
             }
         }
@@ -47,9 +46,5 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Content(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-    ) {
-        Text(text = "Hello")
-    }
+    AppNavigationRoot(modifier)
 }
