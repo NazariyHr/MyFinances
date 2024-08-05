@@ -1,9 +1,8 @@
-package nazar.hr.myfinances.presentation.features.settings
+package nazar.hr.myfinances.presentation.features.settings.currencies
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -11,38 +10,44 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import nazar.hr.myfinances.presentation.common.components.MainScreensLayout
-import nazar.hr.myfinances.presentation.common.theme.ColorMainBg
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
 
 @Composable
-fun SettingsScreenRoot(
+fun CurrenciesScreenRoot(
     navController: NavController,
-    viewModel: SettingsViewModel =
+    viewModel: CurrenciesViewModel =
         hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    SettingsScreen(
+    CurrenciesScreen(
         state = state
     )
 }
 
 @Composable
-private fun SettingsScreen(
-    state: SettingsScreenState
+private fun CurrenciesScreen(
+    state: CurrenciesScreenState
 ) {
     MainScreensLayout {
         Column(
             modifier = Modifier
+                .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
         ) {
             Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp),
                 text = state.title,
-                style = MaterialTheme.typography.headlineLarge
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center
             )
         }
     }
@@ -50,16 +55,10 @@ private fun SettingsScreen(
 
 @Preview
 @Composable
-private fun SettingsScreenPreview() {
+private fun CurrenciesScreenPreview() {
     MyFinancesTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = ColorMainBg)
-        ) {
-            SettingsScreen(
-                state = SettingsScreenState()
-            )
-        }
+        CurrenciesScreen(
+            state = CurrenciesScreenState()
+        )
     }
 }

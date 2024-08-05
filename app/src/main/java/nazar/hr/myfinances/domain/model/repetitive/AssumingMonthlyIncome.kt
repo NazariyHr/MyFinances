@@ -1,6 +1,6 @@
 package nazar.hr.myfinances.domain.model.repetitive
 
-import nazar.hr.myfinances.domain.model.Currency
+import nazar.hr.myfinances.domain.model.currency.Currency
 import nazar.hr.myfinances.domain.model.assets.Asset
 import nazar.hr.myfinances.domain.model.transactions.IncomeCategory
 

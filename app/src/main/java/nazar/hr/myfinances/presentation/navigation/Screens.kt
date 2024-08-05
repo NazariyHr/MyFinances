@@ -9,7 +9,10 @@ sealed class Screen {
     data object TestScreenWithoutNavBar : Screen()
 
     @Serializable
-    data object Settings : Screen()
+    data object SettingsMenu : Screen()
+
+    @Serializable
+    data object Currencies : Screen()
 
     @Serializable
     data object Wallets : Screen()

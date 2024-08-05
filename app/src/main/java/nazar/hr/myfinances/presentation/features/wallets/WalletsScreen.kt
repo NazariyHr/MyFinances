@@ -1,6 +1,9 @@
 package nazar.hr.myfinances.presentation.features.wallets
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,10 +32,14 @@ private fun WalletsScreen(
     state: WalletsScreenState
 ) {
     MainScreensLayout {
-        Box(
+        Column(
             modifier = Modifier
+                .verticalScroll(rememberScrollState())
         ) {
-            Text(text = state.title)
+            Text(
+                text = state.title,
+                style = MaterialTheme.typography.headlineLarge
+            )
         }
     }
 }

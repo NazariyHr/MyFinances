@@ -30,7 +30,8 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
-import nazar.hr.myfinances.presentation.features.settings.SettingsScreenRoot
+import nazar.hr.myfinances.presentation.features.settings.currencies.CurrenciesScreenRoot
+import nazar.hr.myfinances.presentation.features.settings.settings_menu.SettingsMenuScreenRoot
 import nazar.hr.myfinances.presentation.features.wallets.WalletsScreenRoot
 import nazar.hr.myfinances.presentation.navigation.components.BottomNavigationBar
 import kotlin.enums.EnumEntries
@@ -106,10 +107,13 @@ fun AppNavigation(
                 }
             }
             navigation<ScreenGroups.SettingsScreensGroup>(
-                startDestination = Screen.Settings
+                startDestination = Screen.SettingsMenu
             ) {
-                composableNoTransition<Screen.Settings> {
-                    SettingsScreenRoot(navController)
+                composableNoTransition<Screen.SettingsMenu> {
+                    SettingsMenuScreenRoot(navController)
+                }
+                composableNoTransition<Screen.Currencies> {
+                    CurrenciesScreenRoot(navController)
                 }
             }
         }

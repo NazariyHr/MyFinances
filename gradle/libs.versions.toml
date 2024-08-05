@@ -15,6 +15,7 @@ gson = "2.10.1"
 hiltVersion = "2.51.1"
 hilt-navigation-compose = "1.2.0"
 coil = "2.5.0"
+room = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +46,11 @@ androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navig
 #navigation
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+#room
+room = { group = "androidx.room", name = "room-ktx", version.ref = "room"}
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room"}
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

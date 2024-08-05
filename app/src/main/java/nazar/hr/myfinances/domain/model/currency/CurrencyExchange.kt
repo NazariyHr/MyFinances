@@ -1,16 +1,4 @@
-package nazar.hr.myfinances.domain.model
-
-data class Currency(
-    val id: Int,
-    val sign: String,
-    val name: String,
-    val type: CurrencyType
-)
-
-enum class CurrencyType {
-    Regular,
-    CryptoStableCoin
-}
+package nazar.hr.myfinances.domain.model.currency
 
 /**
  * @param value - how much [payingCurrency] needed to buy exactly 1.0 amount of [buyingCurrency]

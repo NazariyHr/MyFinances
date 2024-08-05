@@ -1,6 +1,6 @@
 package nazar.hr.myfinances.domain.model.loans_and_debts
 
-import nazar.hr.myfinances.domain.model.Currency
+import nazar.hr.myfinances.domain.model.currency.Currency
 
 data class Debt(
     val id: Int,
