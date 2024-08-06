@@ -1,11 +1,14 @@
 package nazar.hr.myfinances.data.repository_implementations
 
+import android.database.sqlite.SQLiteConstraintException
+import android.database.sqlite.SQLiteException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import nazar.hr.myfinances.data.local_db.Database
 import nazar.hr.myfinances.data.local_db.entity.toCurrency
 import nazar.hr.myfinances.data.local_db.entity.toCurrencyEntity
+import nazar.hr.myfinances.domain.errors.DataBaseErrors
 import nazar.hr.myfinances.domain.model.currency.Currency
 import nazar.hr.myfinances.domain.repository.CurrencyRepository
 
@@ -15,7 +18,7 @@ class CurrencyRepositoryImpl(
 
     private val currDao = database.currencyDao
 
-    override fun getCurrenciesFlow(currencyId: Int): Flow<List<Currency>> =
+    override fun getCurrenciesFlow(): Flow<List<Currency>> =
         currDao.getAllFlow().distinctUntilChanged()
             .map { currencies -> currencies.map { currency -> currency.toCurrency() } }
 
@@ -30,7 +33,17 @@ class CurrencyRepositoryImpl(
     }
 
     override suspend fun createCurrency(currencyData: Currency.CreateCurrencyData) {
-        currDao.create(currencyData.toCurrencyEntity())
+        try {
+            currDao.create(currencyData.toCurrencyEntity())
+        } catch (e: SQLiteConstraintException) {
+            if (e.message?.contains("UNIQUE constraint failed") == true) {
+                throw DataBaseErrors.UniqueConstraintError(e.message.orEmpty())
+            } else {
+                throw DataBaseErrors.UnexpectedError(e.message.orEmpty())
+            }
+        } catch (e: SQLiteException) {
+            throw DataBaseErrors.UnexpectedError(e.message.orEmpty())
+        }
     }
 
     override suspend fun removeCurrency(currencyId: Int) {

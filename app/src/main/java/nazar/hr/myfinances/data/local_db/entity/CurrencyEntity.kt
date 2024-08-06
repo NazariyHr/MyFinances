@@ -1,11 +1,16 @@
 package nazar.hr.myfinances.data.local_db.entity
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import nazar.hr.myfinances.domain.model.currency.Currency
 import nazar.hr.myfinances.domain.model.currency.CurrencyType
 
-@Entity
+@Entity(
+    indices = [
+        Index(value = ["sign", "name"], unique = true)
+    ]
+)
 data class CurrencyEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,

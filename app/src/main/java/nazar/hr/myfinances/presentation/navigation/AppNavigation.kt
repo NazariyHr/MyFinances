@@ -7,6 +7,8 @@ import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.slideIn
+import androidx.compose.animation.slideOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
@@ -15,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDeepLink
 import androidx.navigation.NavDestination
@@ -30,7 +33,8 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
-import nazar.hr.myfinances.presentation.features.settings.currencies.CurrenciesScreenRoot
+import nazar.hr.myfinances.presentation.features.settings.currencies.create_currency.CreateCurrencyScreenRoot
+import nazar.hr.myfinances.presentation.features.settings.currencies.currencies_list.CurrenciesListScreenRoot
 import nazar.hr.myfinances.presentation.features.settings.settings_menu.SettingsMenuScreenRoot
 import nazar.hr.myfinances.presentation.features.wallets.WalletsScreenRoot
 import nazar.hr.myfinances.presentation.navigation.components.BottomNavigationBar
@@ -112,8 +116,41 @@ fun AppNavigation(
                 composableNoTransition<Screen.SettingsMenu> {
                     SettingsMenuScreenRoot(navController)
                 }
-                composableNoTransition<Screen.Currencies> {
-                    CurrenciesScreenRoot(navController)
+                composable<Screen.CurrenciesList>(
+                    enterTransition = {
+                        slideIn(
+                            initialOffset = { fullSize ->
+                                IntOffset(0, fullSize.height)
+                            }
+                        )
+                    },
+                    exitTransition = {
+                        slideOut(
+                            targetOffset = {
+                                IntOffset(0, 0)
+                            }
+                        )
+                    }
+                ) {
+                    CurrenciesListScreenRoot(navController)
+                }
+                composable<Screen.CreateCurrency>(
+                    enterTransition = {
+                        slideIn(
+                            initialOffset = { fullSize ->
+                                IntOffset(0, fullSize.height)
+                            }
+                        )
+                    },
+                    exitTransition = {
+                        slideOut(
+                            targetOffset = {
+                                IntOffset(0, 0)
+                            }
+                        )
+                    }
+                ) {
+                    CreateCurrencyScreenRoot(navController)
                 }
             }
         }

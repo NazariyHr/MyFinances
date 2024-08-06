@@ -17,7 +17,7 @@ import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
 
 @Composable
 fun MainScreensLayout(
-    paddingTop: Dp = 0.dp,//DefaultPadding,
+    paddingTop: Dp = 0.dp,
     paddingBottom: Dp = DefaultPadding,
     paddingStart: Dp = DefaultPadding,
     paddingEnd: Dp = DefaultPadding,

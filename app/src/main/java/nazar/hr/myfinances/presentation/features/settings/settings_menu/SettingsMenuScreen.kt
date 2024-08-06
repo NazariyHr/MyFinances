@@ -1,6 +1,5 @@
 package nazar.hr.myfinances.presentation.features.settings.settings_menu
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -37,7 +36,7 @@ fun SettingsMenuScreenRoot(
         onMenuItemClicked = { settingMenuItem ->
             when (settingMenuItem) {
                 SettingMenuItems.CURRENCIES -> {
-                    navController.navigate(Screen.Currencies)
+                    navController.navigate(Screen.CurrenciesList)
                 }
 
                 SettingMenuItems.CURRENCY_EXCHANGES -> {
@@ -77,10 +76,10 @@ private fun SettingsMenuScreen(
                         .padding(
                             top = if (index == 0) 0.dp else gap / 2,
                             bottom = if (index == SettingMenuItems.entries.count() - 1) 0.dp else gap / 2
-                        )
-                        .clickable {
-                            onMenuItemClicked(settingMenuItem)
-                        }
+                        ),
+                    onClicked = {
+                        onMenuItemClicked(settingMenuItem)
+                    }
                 )
             }
         }

@@ -12,7 +12,10 @@ sealed class Screen {
     data object SettingsMenu : Screen()
 
     @Serializable
-    data object Currencies : Screen()
+    data object CurrenciesList : Screen()
+
+    @Serializable
+    data object CreateCurrency : Screen()
 
     @Serializable
     data object Wallets : Screen()
