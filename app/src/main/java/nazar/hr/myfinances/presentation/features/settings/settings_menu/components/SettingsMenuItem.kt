@@ -1,7 +1,6 @@
 package nazar.hr.myfinances.presentation.features.settings.settings_menu.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nazar.hr.myfinances.presentation.common.components.MainScreensLayout
+import nazar.hr.myfinances.presentation.common.components.safeSingleClick
 import nazar.hr.myfinances.presentation.common.theme.ColorLightContainers
 import nazar.hr.myfinances.presentation.common.theme.ColorPrimaryDark
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
@@ -35,7 +35,7 @@ fun SettingsMenuItem(
         modifier = modifier
             .clip(RoundedCornerShape(12.dp))
             .background(ColorLightContainers)
-            .clickable(
+            .safeSingleClick(
                 indication = rememberRipple(
                     color = ColorPrimaryDark
                 ),
@@ -43,6 +43,13 @@ fun SettingsMenuItem(
             ) {
                 onClicked()
             }
+//            .clickable(
+//                indication = rememberRipple(
+//                    color = ColorPrimaryDark
+//                ),
+//                interactionSource = remember { MutableInteractionSource() }
+//            ) {
+//            }
             .padding(horizontal = 12.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {

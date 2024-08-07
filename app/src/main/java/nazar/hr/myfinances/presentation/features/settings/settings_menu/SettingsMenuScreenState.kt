@@ -1,4 +1,4 @@
-package nazar.hr.myfinances.presentation.features.settings.settings_menu.ui_model
+package nazar.hr.myfinances.presentation.features.settings.settings_menu
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

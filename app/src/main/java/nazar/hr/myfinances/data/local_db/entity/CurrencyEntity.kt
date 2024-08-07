@@ -8,7 +8,8 @@ import nazar.hr.myfinances.domain.model.currency.CurrencyType
 
 @Entity(
     indices = [
-        Index(value = ["sign", "name"], unique = true)
+        Index(value = ["sign"], unique = true),
+        Index(value = ["name"], unique = true)
     ]
 )
 data class CurrencyEntity(

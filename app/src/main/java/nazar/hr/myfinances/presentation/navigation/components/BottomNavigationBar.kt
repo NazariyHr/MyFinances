@@ -1,7 +1,6 @@
 package nazar.hr.myfinances.presentation.navigation.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -10,15 +9,16 @@ import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import nazar.hr.myfinances.presentation.common.components.safeSingleClick
 import nazar.hr.myfinances.presentation.common.theme.ColorDarkContainers
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
-import nazar.hr.myfinances.presentation.navigation.BottomNavigationItem
+import nazar.hr.myfinances.presentation.navigation.BottomNavigationItems
 import nazar.hr.myfinances.presentation.navigation.Screen
 import kotlin.enums.EnumEntries
 
 @Composable
 fun BottomNavigationBar(
-    navigationBarItems: EnumEntries<BottomNavigationItem>,
+    navigationBarItems: EnumEntries<BottomNavigationItems>,
     selectedItemIndex: Int,
     onItemClick: (Screen, Int) -> Unit,
     modifier: Modifier = Modifier
@@ -35,7 +35,7 @@ fun BottomNavigationBar(
                 isSelected = selectedItemIndex == index,
                 modifier = Modifier
                     .weight(1f)
-                    .clickable(
+                    .safeSingleClick(
                         interactionSource = null,
                         indication = null
                     ) {
@@ -51,7 +51,7 @@ fun BottomNavigationBar(
 fun BottomNavigationBarPreview(modifier: Modifier = Modifier) {
     MyFinancesTheme {
         BottomNavigationBar(
-            BottomNavigationItem.entries,
+            BottomNavigationItems.entries,
             0,
             { s, i -> },
             modifier = Modifier.wrapContentHeight()

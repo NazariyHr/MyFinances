@@ -20,7 +20,6 @@ import nazar.hr.myfinances.presentation.common.components.MainScreensLayout
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
 import nazar.hr.myfinances.presentation.features.settings.settings_menu.components.SettingsMenuItem
 import nazar.hr.myfinances.presentation.features.settings.settings_menu.ui_model.SettingMenuItems
-import nazar.hr.myfinances.presentation.features.settings.settings_menu.ui_model.SettingsMenuScreenState
 import nazar.hr.myfinances.presentation.features.settings.settings_menu.ui_model.getTitle
 import nazar.hr.myfinances.presentation.navigation.Screen
 

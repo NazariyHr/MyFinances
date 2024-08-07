@@ -154,7 +154,7 @@ private fun CreateCurrencyScreen(
                 )
 
                 Button(
-                    enabled = !state.creationInProgress,
+                    enabled = !state.creationInProgress && sign.isNotEmpty() && name.isNotEmpty(),
                     onClick = {
                         onAction(
                             CreateCurrencyScreenAction.OnCreateClicked(

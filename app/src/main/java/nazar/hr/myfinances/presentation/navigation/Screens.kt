@@ -9,6 +9,9 @@ sealed class Screen {
     data object TestScreenWithoutNavBar : Screen()
 
     @Serializable
+    data object ReportsMenu : Screen()
+
+    @Serializable
     data object SettingsMenu : Screen()
 
     @Serializable
@@ -25,10 +28,21 @@ sealed class Screen {
     data class Wallet(val walletId: Int) : Screen(), Parcelable
 }
 
-sealed class ScreenGroups : Screen() {
+sealed class ScreenGroup : Screen() {
     @Serializable
-    data object SettingsScreensGroup : ScreenGroups()
+    data object WalletsScreensGroup : ScreenGroup() {
+        override fun getFirstScreenOfGroup(): Screen = Wallets
+    }
 
     @Serializable
-    data object WalletsScreensGroup : ScreenGroups()
+    data object ReportsScreensGroup : ScreenGroup() {
+        override fun getFirstScreenOfGroup(): Screen = ReportsMenu
+    }
+
+    @Serializable
+    data object SettingsScreensGroup : ScreenGroup() {
+        override fun getFirstScreenOfGroup(): Screen = SettingsMenu
+    }
+
+    abstract fun getFirstScreenOfGroup(): Screen
 }
