@@ -1,4 +1,4 @@
-package nazar.hr.myfinances.presentation.common.components
+package nazar.hr.myfinances.presentation.common.modifiers
 
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.IndicationNodeFactory

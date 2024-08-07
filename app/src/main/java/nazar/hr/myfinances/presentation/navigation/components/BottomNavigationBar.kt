@@ -9,7 +9,7 @@ import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import nazar.hr.myfinances.presentation.common.components.safeSingleClick
+import nazar.hr.myfinances.presentation.common.modifiers.safeSingleClick
 import nazar.hr.myfinances.presentation.common.theme.ColorDarkContainers
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
 import nazar.hr.myfinances.presentation.navigation.BottomNavigationItems

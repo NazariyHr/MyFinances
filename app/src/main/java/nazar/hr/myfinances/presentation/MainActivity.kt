@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
         )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             window.isNavigationBarContrastEnforced = false
+            this@MainActivity.window.navigationBarColor = Color.rgb(229, 246, 230)
         }
         setContent {
             MyFinancesTheme {

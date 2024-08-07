@@ -27,6 +27,7 @@ import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import nazar.hr.myfinances.presentation.common.modifiers.safeSingleClick
 import nazar.hr.myfinances.presentation.common.theme.ColorLightContainers
 import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
 
