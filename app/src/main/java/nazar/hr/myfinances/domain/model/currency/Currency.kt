@@ -8,12 +8,14 @@ data class Currency(
     val id: Int,
     val sign: String,
     val name: String,
-    val type: CurrencyType
+    val type: CurrencyType,
+    val isMain: Boolean
 ) : Parcelable {
     data class EditCurrencyData(
         val sign: String,
         val name: String,
-        val type: CurrencyType
+        val type: CurrencyType,
+        val isMain: Boolean
     )
 
     data class CreateCurrencyData(

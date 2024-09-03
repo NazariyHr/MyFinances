@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,6 +36,7 @@ import nazar.hr.myfinances.presentation.common.theme.MyFinancesTheme
 fun Currency(
     currency: Currency,
     onRemoveClicked: () -> Unit,
+    onMainCurrencyChanged: (isMain: Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -85,6 +87,26 @@ fun Currency(
                     )
                 }
             }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Checkbox(
+                    checked = currency.isMain,
+                    onCheckedChange = { newValue ->
+                        onMainCurrencyChanged(newValue)
+                    },
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
+                Text(
+                    text = "Is main currency",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
+            }
         }
 
         RemoveIcon(
@@ -106,9 +128,11 @@ private fun CurrencyRegularPreview() {
                     id = 1,
                     sign = "UAH",
                     name = "Hryvna",
-                    type = CurrencyType.REGULAR
+                    type = CurrencyType.REGULAR,
+                    isMain = true
                 ),
                 onRemoveClicked = {},
+                onMainCurrencyChanged = {},
                 modifier = Modifier
                     .fillMaxWidth()
             )
@@ -126,9 +150,11 @@ private fun CurrencyCryptoPreview() {
                     id = 1,
                     sign = "USDT",
                     name = "United States Department of the Treasury",
-                    type = CurrencyType.CRYPTO_STABLE_COIN
+                    type = CurrencyType.CRYPTO_STABLE_COIN,
+                    isMain = false
                 ),
                 onRemoveClicked = {},
+                onMainCurrencyChanged = {},
                 modifier = Modifier
                     .fillMaxWidth()
             )

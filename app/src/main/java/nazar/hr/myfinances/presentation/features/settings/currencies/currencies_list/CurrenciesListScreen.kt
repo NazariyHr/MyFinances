@@ -87,6 +87,14 @@ private fun CurrenciesListScreen(
                         ),
                         onRemoveClicked = {
                             onAction(CurrenciesListScreenAction.OnRemoveCurrencyClicked(currency))
+                        },
+                        onMainCurrencyChanged = { isMain ->
+                            onAction(
+                                CurrenciesListScreenAction.OnMainCurrencyChangedClicked(
+                                    isMain,
+                                    currency
+                                )
+                            )
                         }
                     )
                 }
@@ -103,13 +111,15 @@ private fun CurrenciesListScreenPreview() {
             id = 1,
             sign = "UAH",
             name = "Hryvna",
-            type = CurrencyType.REGULAR
+            type = CurrencyType.REGULAR,
+            isMain = true
         ),
         Currency(
             id = 2,
             sign = "USDT",
             name = "United States Department of the Treasury",
-            type = CurrencyType.CRYPTO_STABLE_COIN
+            type = CurrencyType.CRYPTO_STABLE_COIN,
+            isMain = false
         )
     )
     MyFinancesTheme {

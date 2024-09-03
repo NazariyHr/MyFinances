@@ -16,7 +16,10 @@ interface CurrencyDao {
     fun getAllFlow(): Flow<List<CurrencyEntity>>
 
     @Query("select * from currencyentity where id = :id")
-    fun getFlow(id: Int): Flow<CurrencyEntity?>
+    fun getCurrencyByIdFlow(id: Int): Flow<CurrencyEntity?>
+
+    @Query("select * from currencyentity where isMain = 1")
+    fun getMainCurrencyFlow(): Flow<CurrencyEntity?>
 
     @Query("select * from currencyentity where id = :id")
     suspend fun get(id: Int): CurrencyEntity?
@@ -26,4 +29,11 @@ interface CurrencyDao {
 
     @Query("delete from currencyentity where id = :id")
     suspend fun delete(id: Int)
+
+
+    @Query("update currencyentity set isMain = case when id = :id then 1 else 0 end")
+    suspend fun setAsMainCurrency(id: Int)
+
+    @Query("update currencyentity set isMain = 0 where id = :id")
+    suspend fun unsetAsMainCurrency(id: Int)
 }

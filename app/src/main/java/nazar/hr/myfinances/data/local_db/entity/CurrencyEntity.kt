@@ -17,7 +17,8 @@ data class CurrencyEntity(
     val id: Int,
     val sign: String,
     val name: String,
-    val type: String
+    val type: String,
+    val isMain: Boolean
 )
 
 fun CurrencyEntity.toCurrency(): Currency {
@@ -25,7 +26,8 @@ fun CurrencyEntity.toCurrency(): Currency {
         id,
         sign,
         name,
-        CurrencyType.valueOf(type)
+        CurrencyType.valueOf(type),
+        isMain
     )
 }
 
@@ -34,7 +36,8 @@ fun Currency.toCurrencyEntity(): CurrencyEntity {
         id,
         sign,
         name,
-        type.name
+        type.name,
+        isMain
     )
 }
 
@@ -43,7 +46,8 @@ fun Currency.EditCurrencyData.toCurrencyEntity(id: Int): CurrencyEntity {
         id,
         sign,
         name,
-        type.name
+        type.name,
+        isMain
     )
 }
 
@@ -52,6 +56,7 @@ fun Currency.CreateCurrencyData.toCurrencyEntity(): CurrencyEntity {
         0,
         sign,
         name,
-        type.name
+        type.name,
+        false
     )
 }

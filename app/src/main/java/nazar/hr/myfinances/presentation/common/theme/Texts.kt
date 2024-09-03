@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -127,6 +128,7 @@ private fun FontsPreviewOnMainBackgroundColor() {
             MainScreensLayout {
                 Column(
                     modifier = Modifier
+                        .fillMaxWidth()
                         .verticalScroll(rememberScrollState())
                 ) {
                     Text(
@@ -208,10 +210,12 @@ private fun FontsPreviewInLightContainers() {
                 Column(
                     modifier = Modifier
                         .padding(top = 12.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(ColorLightContainers)
+                        .fillMaxWidth()
+                        .background(
+                           color =  ColorLightContainers,
+                            shape = RoundedCornerShape(12.dp)
+                        )
                         .padding(12.dp)
-                        .verticalScroll(rememberScrollState())
                 ) {
                     Text(
                         text = "Display Large",
@@ -292,6 +296,7 @@ private fun FontsPreviewInDarkContainers() {
                 Column(
                     modifier = Modifier
                         .padding(top = 12.dp)
+                        .fillMaxWidth()
                         .clip(RoundedCornerShape(12.dp))
                         .background(ColorDarkContainers)
                         .padding(12.dp)

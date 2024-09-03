@@ -8,12 +8,14 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import nazar.hr.myfinances.domain.repository.CurrencyRepository
+import nazar.hr.myfinances.domain.use_cases.currencies.ChangeCurrencyIsMainUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class CurrenciesListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val currencyRepository: CurrencyRepository
+    private val currencyRepository: CurrencyRepository,
+    private val changeCurrencyIsMainUseCase: ChangeCurrencyIsMainUseCase
 ) : ViewModel() {
     companion object {
         const val STATE_KEY = "state"
@@ -42,6 +44,15 @@ class CurrenciesListViewModel @Inject constructor(
             is CurrenciesListScreenAction.OnRemoveCurrencyClicked -> {
                 viewModelScope.launch {
                     currencyRepository.removeCurrency(action.currency.id)
+                }
+            }
+
+            is CurrenciesListScreenAction.OnMainCurrencyChangedClicked -> {
+                viewModelScope.launch {
+                    changeCurrencyIsMainUseCase(
+                        isMain = action.isMain,
+                        currencyId = action.currency.id
+                    )
                 }
             }
         }

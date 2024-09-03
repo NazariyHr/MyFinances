@@ -6,4 +6,8 @@ sealed class CurrenciesListScreenAction {
     data class OnRemoveCurrencyClicked(
         val currency: Currency
     ) : CurrenciesListScreenAction()
+    data class OnMainCurrencyChangedClicked(
+        val isMain: Boolean,
+        val currency: Currency
+    ) : CurrenciesListScreenAction()
 }

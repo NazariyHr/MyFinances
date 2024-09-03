@@ -23,13 +23,24 @@ class CurrencyRepositoryImpl(
             .map { currencies -> currencies.map { currency -> currency.toCurrency() } }
 
     override fun getCurrencyByIdFlow(currencyId: Int): Flow<Currency?> =
-        currDao.getFlow(currencyId).map { it?.toCurrency() }
+        currDao.getCurrencyByIdFlow(currencyId).map { it?.toCurrency() }
+
+    override fun getMainCurrencyFlow(): Flow<Currency?> =
+        currDao.getMainCurrencyFlow().distinctUntilChanged().map { it?.toCurrency() }
 
     override suspend fun getCurrencyById(currencyId: Int): Currency? =
         currDao.get(currencyId)?.toCurrency()
 
     override suspend fun editCurrency(currencyId: Int, currencyData: Currency.EditCurrencyData) {
         currDao.update(currencyData.toCurrencyEntity(currencyId))
+    }
+
+    override suspend fun setAsMainCurrency(currencyId: Int) {
+        currDao.setAsMainCurrency(currencyId)
+    }
+
+    override suspend fun unsetAsMainCurrency(currencyId: Int) {
+        currDao.unsetAsMainCurrency(currencyId)
     }
 
     override suspend fun createCurrency(currencyData: Currency.CreateCurrencyData) {

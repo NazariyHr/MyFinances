@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
             )
         )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            window.isNavigationBarContrastEnforced = false
+            this@MainActivity.window.statusBarColor = Color.rgb(229, 246, 230)
             this@MainActivity.window.navigationBarColor = Color.rgb(229, 246, 230)
         }
         setContent {
